@@ -1,19 +1,21 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.daon.findust'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.daon.findust"
-        minSdk 30
-        targetSdk 32
+        minSdk 26
+        targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,6 +31,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true // 뷰바인딩 사용
     }
 }
 
@@ -46,16 +51,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation "androidx.core:core-ktx:1.9.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20"
 
     // Google Map
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:28.4.2')
-    implementation 'com.google.firebase:firebase-analytics'
-
-    // AdMob
-    implementation 'com.google.android.gms:play-services-ads:20.4.0'
 }
